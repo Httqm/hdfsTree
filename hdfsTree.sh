@@ -249,6 +249,8 @@ hdfsDfsLs() {
 #	hdfs dfs -ls -C /UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2024/month=01
 
 	lsOptions='l'
+	# the default option is 'l' because we're simulating 'hdfs dfs -ls' with 'ls'
+	# and, by default, 'hdfs dfs -ls' outputs using a "long" format
 	while getopts ":CR" opt; do
 		case "$opt" in
 			C)	# list names only (same as 'ls -1')
