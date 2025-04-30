@@ -44,6 +44,25 @@ test_hdfs_dfs_ls() {
 
 test_hdfs_dfs_ls_-C() {
 	# real behaviour :
+	#
+	# hdfs dfs -ls -C /UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA
+	#	/UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2022
+	#	/UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2023
+	#	/UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2024
+	pathToList="$hdfsWorkDir/ABACUS/IMPORTED_REQUESTS_DELTA"
+	result=$($HDFS dfs -ls -C "$pathToList")
+
+	while read resultLine; do
+#		echo "'$resultLine'"
+		assert_matches "^$pathToList/[[:print:]]+$" "$resultLine"
+	done <<< "$result"
+
+	# checking we effectively get "$nbDatafilePerDir" result lines
+	assert_equals "$nbDatafilePerDir" $(wc -l <<< "$result")
+
+
+	# real behaviour :
+	#
 	# hdfs dfs -ls -C /UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2024/month=02/day=28/hour=12
 	#	/UAT/data_lake/ABACUS/IMPORTED_REQUESTS_DELTA/year=2024/month=02/day=28/hour=12/<dataFile>
 	pathToList="$hdfsWorkDir/ABACUS/IMPORTED_REQUESTS_DELTA/year=2024/month=02/day=28/hour=12"

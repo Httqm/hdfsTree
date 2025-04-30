@@ -279,7 +279,7 @@ hdfsDfsLs() {
 		1)	# when 'hdfs dfs -ls -C /path/to/list' was invoked
 			awk -v pathInHdfs=$pathInHdfs '
 				/total/			{ next; }
-				$0 ~ /^[-d]/	{$NF=pathInHdfs"/"$NF; print $0}' <<< "$lsResult" | column -s ' ' -t
+				$0 ~ /^[[:print:]]/	{$NF=pathInHdfs"/"$NF; print $0}' <<< "$lsResult" | column -s ' ' -t
 			;;
 		lR)
 			# when 'hdfs dfs -ls -R /path/to/list' was invoked
