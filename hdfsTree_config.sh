@@ -32,15 +32,6 @@ ALCYONE DIM_ACCOUNT_H1 day
 FEDERATED_INVENTORY AGING day
 FEDERATED_INVENTORY AGREEMENT day
 MM2 2023 day'
-#beverage beer day
-#beverage coffee day
-#beverage tea day
-#car engine hour
-#car seats hour
-#car wheels hour
-#shop discs day
-#shop shoes day
-#shop vegetables day
 
 
 nbDatafilePerDir=2
