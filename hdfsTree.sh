@@ -55,7 +55,7 @@ usage() {
 
 
 	Suggested usage :
-	    1. create the simulated HDFS tree:                      ./$scriptName create
+	    1. create the simulated HDFS tree:                      ./$scriptName create hdfs
 	    2. copy-paste commands to catch 'hdfs dfs <command>':   ./$scriptName catch
 	    3. run and enjoy 'hdfs dfs <command>' commands
 	    4. delete the simulated HDFS tree:                      ./$scriptName delete
