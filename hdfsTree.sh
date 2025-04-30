@@ -88,8 +88,8 @@ _createHdfsPathToFile() {
 
 createHdfsTree() {
 	local nbObjects=0
-	local startDay='2024-01-27'
-	local endDay='2024-03-04'
+	local startDay='2024-11-27'
+	local endDay='2025-03-04'
 	while read dataSource dataSet depth; do		# see 'hdfsTree_config.sh' for details about these parameters
 		datasetDir="$hdfsRoot$hdfsWorkDir/$dataSource/$dataSet"
 		theDay="$startDay"
